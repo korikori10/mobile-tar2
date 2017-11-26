@@ -9,16 +9,24 @@
     <script src="AjaxCalls.js"></script>
     <script src="Products.js"></script>
     <link href="StyleSheet.css" rel="stylesheet" />
+
 </head>
 <body>
-    <div data-role="page" data-position="fixed">
-        <div data-role="header">  <h1>Welcome      </h1> </div> <!-- /header -->
+    <div data-role="page" data-position="fixed" id="home" >
+        <div data-role="header" >  <h1 > Welcome      </h1> </div> <!-- /header -->
         <div data-role="content"> 
-            <ul data-role="listview" data-filter="true" data-inset="true" id="DynamicList"> 
-
+            <ul data-role="listview" data-count-theme="a" data-filter="true" data-filter-placeholder="search for category..." data-filter-reveal="true" data-inset="true" id="DynamicList" > 
+              
             </ul>
            </div> <!-- /content -->
         <div data-role="footer" id="footer"> <img  src="images/logo.png" style="height:inherit"/> </div> <!-- /footer -->
+    </div><!-- /page -->
+    <div data-role="page" data-position="fixed" id="category">
+        <div data-role="header">  <h1> Product List      </h1> </div> <!-- /header -->
+        <div data-role="content">
+            <ul data-role="listview" data-count-theme="a" data-filter="true" data-filter-placeholder="search for category..." data-filter-reveal="true" data-inset="true" id="DynamicList"></ul>
+        </div> <!-- /content -->
+        <div data-role="footer" id="footer"> <img src="images/logo.png" style="height:inherit" /> </div> <!-- /footer -->
     </div><!-- /page -->
 
 </body>

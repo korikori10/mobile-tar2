@@ -10,7 +10,9 @@
         error: function (request, error) {
             alert('Network error has occurred please try again!');
         }
+       
     });
+    
 }
 
 
@@ -52,4 +54,5 @@ function getProduct(ProductInfo, renderFullProduct) {
             alert('Network error has occurred please try again!');
         }
     });
+    
 }
