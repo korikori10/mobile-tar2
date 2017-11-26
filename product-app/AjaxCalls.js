@@ -11,6 +11,7 @@
             alert('Network error has occurred please try again!');
         }
     });
+    
 }
 
 
