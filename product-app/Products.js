@@ -39,6 +39,7 @@ $(document).on('pagebeforeshow', '#DynamicList', function () {
 
 function renderCategory(results) {
     //this is the callBackFunc 
+<<<<<<< HEAD
     resutls = $.parseJSON(results.d);
     $("#DynamicList").empty();
    CategoryInfo.result = result.results;
@@ -49,23 +50,76 @@ function renderCategory(results) {
         $('#DynamicList').append('<li><a href="#" data-id="' + row.id + '"><p>' + row.name + "&nbsp&nbsp&nbsp" + row.vote_average + '</p></a></li>');
     });
     $('#DynamicList').listview('refresh');
+=======
+    results = $.parseJSON(results.d);
+    $('#DynamicList').empty();
+    $.each(results, function (i, row) {
+        dynamicLi = '<li> <a href="" data-id="' + row.Id + '"> <h3>' + row.Name + '</h3><span class="ui-li-count"> ' + row.ProductAmount+ '</span></a></li>'
+        $('#DynamicList').append(dynamicLi);
+        $('#DynamicList').listview('refresh');
+    }
+
+>>>>>>> a9b7760640ac67e05d79ab4bcec490f3e84b2e09
    
 }
 
+<<<<<<< HEAD
+=======
+    });
+
+});
+>>>>>>> a9b7760640ac67e05d79ab4bcec490f3e84b2e09
 
 function renderProducts(results) {
     //this is the callBackFunc 
     results = $.parseJSON(results.d);
+<<<<<<< HEAD
     
 
+=======
+    $('#DynamicListproducts').empty();
+    $.each(results, function (i, row) {
+      // console.log(JSON.stringify(row));
+       if (row.ImagePath == null) { imageFullPath = "/images/no-img.jpg" }
+            else { imageFullPath = row.ImagePath }
+        dynamicList = '<li> <img src="'+ imageFullPath + '"/> <a href="" data-id="' + row.Id + '">  <h3>' + row.Title + '</h3><p>Price: ' + row.Price + '</br>Inventory: '+ row.Inventory + '</p></a></li>'
+        $('#DynamicListproducts').append(dynamicList);
+        $('#DynamicListproducts').listview('refresh');
+    })
+>>>>>>> a9b7760640ac67e05d79ab4bcec490f3e84b2e09
 }
 
+
+$(document).on('vclick', '#DynamicListproducts li a', function () {
+    ProductInfo.id = $(this).attr('data-id');
+    getProduct(ProductInfo, renderFullProduct);
+    $.mobile.changePage("#product", {
+        transition: "slide", changeHash: false
+
+    });
+
+});
 
 function renderFullProduct(results) {
     //this is the callBackFunc 
     results = $.parseJSON(results.d);
-
-  
+    var attributes = "";
+    $('#productPage').empty();
+        if (results.ImagePath == null) { imageFullPath = "/images/no-img.jpg" }
+        else { imageFullPath = results.ImagePath }
+        pimginv = "<div style='text-align:center; padding-top:1em;padding-bottom:1em;'><h3>" + results.Title + "</h3></br><img src='" + imageFullPath + "'/> </br><p>Inventory: " + results.Inventory + "</p></div>"
+        $('#productPage').append(pimginv);
+        $.each(results.Attributes, function (i, row) {
+            if (results.Attributes == null) {
+                attributes = "<h4>No attributes for this product!</h4>"
+            }
+            else {
+                attributes = "<h4>" + i + "</h4>" +"<p>" + row + "</p>"
+            }
+        });
+        $('#productPageList').append(attributes);
+   
+    
 
 }
 
